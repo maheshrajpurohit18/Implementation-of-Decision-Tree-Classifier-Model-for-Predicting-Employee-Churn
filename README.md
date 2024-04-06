@@ -1,4 +1,4 @@
-# Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn
+[# Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn
 
 ## AIM:
 To write a program to implement the Decision Tree Classifier Model for Predicting Employee Churn.
@@ -8,93 +8,71 @@ To write a program to implement the Decision Tree Classifier Model for Predictin
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
-
-1. Import the required libraries.
-   
-2. Upload and read the dataset.
-   
-3. Check for any null values using the isnull() function.
-   
-4. From sklearn.tree import DecisionTreeClassifier and use criterion as entropy.
-   
-5. Find the accuracy of the model and predict the required values by importing the required module from sklearn.
+1. Import pandas
+2. Import Decision tree classifier
+3. Fit the data in the model
+4. Find the accuracy score
 
 ## Program:
 ```
+/*
 Program to implement the Decision Tree Classifier Model for Predicting Employee Churn.
-Developed by: MAHESH RAJ PUROHIT J
-RegisterNumber: 212222240058
-```
-```py
+Developed by: MAHESH RAJ PUROHIT
+RegisterNumber:  212222240058
+
 import pandas as pd
-df=pd.read_csv("Employee.csv")
-
-df.head()
-df.info()
-df.isnull().sum()
-df["left"].value_counts()
-
+data=pd.read_csv("/content/Employee.csv")
+data.head()
+data.info()
+data.isnull().sum()
+data["left"].value_counts()
 from sklearn.preprocessing import LabelEncoder
 le=LabelEncoder()
-
-df["salary"]=le.fit_transform(df["salary"])
-df.head()
-
-x=df[["satisfaction_level","last_evaluation","number_project","average_montly_hours","time_spend_company","Work_accident","promotion_last_5years","salary"]]
-x.head()
-
-y=df["left"]
-
+data["salary"]=le.fit_transform(data["salary"])
+data.head()
+x=data[["satisfaction_level","last_evaluation","number_project","average_montly_hours","time_spend_company","Work_accident","promotion_last_5years","salary"]]
+x.head()    #no departments and no left
+y=data["left"]
 from sklearn.model_selection import train_test_split
 x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=100)
-
 from sklearn.tree import DecisionTreeClassifier
 dt=DecisionTreeClassifier(criterion="entropy")
 dt.fit(x_train,y_train)
 y_pred=dt.predict(x_test)
-
 from sklearn import metrics
 accuracy=metrics.accuracy_score(y_test,y_pred)
 accuracy
-
 dt.predict([[0.5,0.8,9,260,6,0,1,2]])
 
+*/
 ```
 
 ## Output:
+#### data.head()
+![Screenshot 2023-06-03 181522](https://github.com/Yamunaasri/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/115707860/28a02272-d076-488b-bc0e-258db61a3b29)
 
-### data.head()
+#### data.info()
+![Screenshot 2023-06-03 181528](https://github.com/Yamunaasri/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/115707860/cdc55078-656b-49d7-b171-ba2be9a56bfd)
 
-![ml_1](https://github.com/Skanthasishanth/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/118298456/2b255637-0e17-477e-bea6-c50b79a7c47a)
+#### isnull() and sum()
+![Screenshot 2023-06-03 181534](https://github.com/Yamunaasri/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/115707860/c8005750-fb30-47db-9c4d-6309e48560b7)
 
-### data.info()
+#### data value counts()
+![Screenshot 2023-06-03 181649](https://github.com/Yamunaasri/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/115707860/8cbea8e5-088d-4896-8c3f-eabcedd9b7a0)
 
-![ml_2](https://github.com/Skanthasishanth/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/118298456/caf6d54a-0c7f-47a8-a4bc-cf0e38df9f85)
+#### data.head() for salary
+![Screenshot 2023-06-03 181719](https://github.com/Yamunaasri/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/115707860/7123868e-1b73-448a-a92c-bfcb52c69d22)
 
-### isnull() and sum()
+#### x.head()
+![Screenshot 2023-06-03 181729](https://github.com/Yamunaasri/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/115707860/7900550f-09ae-4b93-baa2-4e1d8cd21967)
 
-![ml_3](https://github.com/Skanthasishanth/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/118298456/2518141a-c1a7-4da7-afc7-a980b0521c8f)
+#### accuracy value
+![Screenshot 2023-06-03 181805](https://github.com/Yamunaasri/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/115707860/d6235dee-d231-4eb2-9540-5a8fcc8d845f)
 
-### data value counts()
-
-![ml_4](https://github.com/Skanthasishanth/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/118298456/2eb06960-84dd-4672-b461-ca6b15089962)
-
-### data.head() for salary
-
-![ml_5](https://github.com/Skanthasishanth/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/118298456/07118456-06e3-4d6e-94cb-d659131b0b73)
-
-### x.head()
-
-![ml_6](https://github.com/Skanthasishanth/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/118298456/450941b2-7d1e-4d73-96a6-eb8cca679dd7)
-
-### accuracy value
-
-![ml_7](https://github.com/Skanthasishanth/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/118298456/80cae8c2-1b2b-4d28-9a37-1b4feeab35be)
-
-### data prediction
-
-![ml_8](https://github.com/Skanthasishanth/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/118298456/4a303c1b-5989-4f51-8174-3ddc627b569d)
+#### data prediction
+![Screenshot 2023-06-03 181815](https://github.com/Yamunaasri/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/115707860/79384c60-837a-474e-adc4-cb88724287ce)
 
 
 ## Result:
 Thus the program to implement the  Decision Tree Classifier Model for Predicting Employee Churn is written and verified using python programming.
+](https://github.com/maheshrajpurohit18/Implementation-of-Decision-Tree-Regressor-Model-for-Predicting-the-Salary-of-the-Employee.git)
